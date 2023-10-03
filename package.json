@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "coderama",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://jurajstekla.github.io/coderama",
@@ -32,8 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "fulldeploy":"npm run build & gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
