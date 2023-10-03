@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import Router from './Router/Router';
 import { Box, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -38,9 +38,9 @@ function App() {
   return (
     <Suspense fallback={<Loader />}>
       <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
+          <HashRouter>
             <Router />
-          </BrowserRouter>
+          </HashRouter>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Suspense>
