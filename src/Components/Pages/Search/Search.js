@@ -6,6 +6,7 @@ import DisableableBox from '../../../Global/HelperComponents/DisableableBox';
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import Condition from '../../../Global/HelperComponents/Condition';
 import { useSearch } from './searchHelpers';
+import { StyledOutlineInput } from '../../../Global/StyledComponents/styledComponents';
 
 const Search = () => {
   const {
@@ -61,19 +62,18 @@ const Search = () => {
         component='form'
         onSubmit={handleSearch}
       >
-        <OutlinedInput
+        <StyledOutlineInput
           name='searchValue'
           id='searchValue'
           defaultValue={searchValue !== '' ? searchValue : ''}
-          sx={{
-            height: '100%',
-            width: '100%',
-            pr: 0
-          }}
           required
           placeholder='Search movie title ...'
           endAdornment={
-            <Button type='submit' variant='contained' sx={{ height: '100%', boxShadow: 'none' }}>
+            <Button
+              type='submit'
+              variant='contained'
+              sx={{ height: '100%', boxShadow: 'none', borderRadius: '10px' }}
+            >
               <SearchIcon color='action' />
             </Button>
           }

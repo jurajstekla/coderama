@@ -1,4 +1,4 @@
-import { TextField, styled, Button, Box } from '@mui/material';
+import { TextField, styled, Button, Box, OutlinedInput } from '@mui/material';
 import { ArrowRight, ArrowDropDown, Settings } from '@mui/icons-material';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
@@ -102,6 +102,20 @@ export const StyledFlagBox = styled(Box, { shouldForwardProp: prop => prop !== '
     borderRadius: 5,
     '&:hover': {
       boxShadow: theme.palette.shadow.primary
+    }
+  })
+);
+
+export const StyledOutlineInput = styled(OutlinedInput, { shouldForwardProp: prop => prop })(
+  ({ theme }) => ({
+    width: '100%',
+    height: '100%',
+    background: theme.palette.background.default,
+    borderRadius: 10,
+    paddingRight: 0,
+    input: {
+      padding: 10,
+      height: 10
     }
   })
 );
