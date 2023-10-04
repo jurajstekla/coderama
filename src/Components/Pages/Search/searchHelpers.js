@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSearchResultsAction } from '../../../api/actions/searchActions';
-import { setRows, setSearchValue } from '../../../api/redux/slices/movieTableSlice';
+import {
+  setPaginationModel,
+  setRows,
+  setSearchValue,
+  setTotalRowsCount
+} from '../../../api/redux/slices/movieTableSlice';
 import { addNotification } from '../../../api/redux/slices/notificationsSlice';
 
 export const formatResponse = data => {
@@ -14,16 +19,31 @@ export const formatResponse = data => {
 export const useSearch = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = useState(false);
-  const { rows, searchValue } = useSelector(state => state.movieTable);
+  const { rows, searchValue, totalRowsCount, pagination } = useSelector(state => state.movieTable);
+
+  const handlePaginationModel = e => {
+    dispatch(setPaginationModel(e));
+    handleChangePage(e.page + 1);
+  };
+
+  const handleChangePage = page => {
+    setIsLoading(true);
+
+    getSearchResultsAction(searchValue, page)
+      .then(data => {
+        dispatch(setRows(formatResponse(data?.Search || [])));
+      })
+      .finally(() => setIsLoading(false));
+  };
 
   const handleSearch = e => {
     e.preventDefault();
     const value = e.target.elements.searchValue.value;
-    setIsLoading(true);
     dispatch(setSearchValue(value));
-    getSearchResultsAction(value)
+
+    setIsLoading(true);
+    getSearchResultsAction(value, 1)
       .then(data => {
         if (data?.Response === 'False') {
           dispatch(
@@ -33,7 +53,8 @@ export const useSearch = () => {
             })
           );
         }
-        dispatch(setRows(formatResponse(data.Search || [])));
+        dispatch(setTotalRowsCount(data?.totalResults || 0));
+        dispatch(setRows(formatResponse(data?.Search || [])));
       })
       .finally(() => setIsLoading(false));
   };
@@ -42,5 +63,14 @@ export const useSearch = () => {
     navigate(`/details/${row.id}`);
   };
 
-  return { rows, isLoading, searchValue, handleSearch, handleRowClick };
+  return {
+    rows,
+    isLoading,
+    searchValue,
+    pagination,
+    totalRowsCount,
+    handleSearch,
+    handleRowClick,
+    handlePaginationModel
+  };
 };

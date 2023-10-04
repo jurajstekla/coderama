@@ -5,8 +5,12 @@ export const movieTableSlice = createSlice({
   initialState: {
     loading: false,
     rows: [],
-    selectedRow: [],
-    searchValue: ''
+    searchValue: '',
+    totalRowsCount: 0,
+    pagination: {
+      page: 0,
+      pageSize: 10
+    }
   },
   reducers: {
     setLoading: (state, action) => {
@@ -18,12 +22,16 @@ export const movieTableSlice = createSlice({
     setRows: (state, action) => {
       state.rows = action.payload;
     },
-    setSelectedRow: (state, action) => {
-      state.selectedRow = action.payload;
+    setTotalRowsCount: (state, action) => {
+      state.totalRowsCount = parseInt(action.payload);
+    },
+    setPaginationModel: (state, action) => {
+      state.pagination = action.payload;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setLoading, setRows, setSelectedRow, setSearchValue } = movieTableSlice.actions;
+export const { setLoading, setRows, setTotalRowsCount, setSearchValue, setPaginationModel } =
+  movieTableSlice.actions;
 export default movieTableSlice.reducer;

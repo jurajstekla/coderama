@@ -8,7 +8,16 @@ import Condition from '../../../Global/HelperComponents/Condition';
 import { useSearch } from './searchHelpers';
 
 const Search = () => {
-  const { rows, isLoading, searchValue, handleSearch, handleRowClick } = useSearch();
+  const {
+    rows,
+    isLoading,
+    searchValue,
+    pagination,
+    totalRowsCount,
+    handleSearch,
+    handleRowClick,
+    handlePaginationModel
+  } = useSearch();
 
   const finalColumns = useMemo(
     () => [
@@ -74,13 +83,16 @@ const Search = () => {
         <DisableableBox loading={isLoading}>
           <DataGrid
             rows={rows}
+            rowCount={totalRowsCount}
             columns={finalColumns}
             onRowClick={handleRowClick}
+            paginationMode='server'
+            paginationModel={pagination}
+            onPaginationModelChange={handlePaginationModel}
             disableColumnFilter
-            pageSize={50}
             headerHeight={45}
-            rowHeight={35}
-            rowsPerPageOptions={[50]}
+            rowHeight={40}
+            pageSizeOptions={[10]}
             stickyHeader
             slots={{
               noRowsOverlay: () => (
