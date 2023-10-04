@@ -2,7 +2,7 @@ import Home from '../Components/Pages/Home';
 import NotFound from '../Components/Pages/NotFound/NotFound';
 import ErrorPage from '../Components/Pages/ErrorPage/ErrorPage';
 import Search from '../Components/Pages/Search/Search';
-import Details from  '../Components/Pages/Details/Details';
+import Details from '../Components/Pages/Details/Details';
 
 import {
   Home as HomeIcon,
@@ -26,47 +26,47 @@ import {
   AccountTree,
   AddTask,
   Search as SearchIcon,
-  Favorite, Details as DetailsIcon
+  Favorite,
+  Details as DetailsIcon
 } from '@mui/icons-material';
 import Favorites from '../Components/Pages/Favorites/Favorites';
 
+export const pages = [];
 export const privatePages = [
   {
     path: `/`,
     exact: true,
     component: Home,
     children: [
-      
       {
         path: `/search`,
         component: Search,
         menuLabel: `Movie search`,
-        menuIcon: SearchIcon,
+        menuIcon: SearchIcon
       },
       {
         path: `/favorites`,
         component: Favorites,
         menuLabel: `Favorites`,
-        menuIcon: Favorite,
+        menuIcon: Favorite
       },
       {
-        path: `/details`,
+        path: `/details/:movieId`,
         component: Details,
         menuLabel: `Details`,
-        menuIcon: Info,
+        menuIcon: Info
       },
       {
         path: `/`,
         component: Search,
         menuLabel: `Movie search`,
-        menuIcon: SearchIcon,
-      },
+        menuIcon: SearchIcon
+      }
     ]
   },
   { path: `/error`, component: ErrorPage },
   { path: `*`, component: NotFound }
 ];
-
 
 export const dateTimeFormat = 'dd. mm. yy, h:MM TT';
 export const dateFormat = 'dd. mm. yyyy';

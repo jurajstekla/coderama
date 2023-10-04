@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Box, CssBaseline } from '@mui/material';
-import ThemeModeToggler from './ThemeModeToggler';
+import ThemeModeToggler from '../HelperComponents/ThemeModeToggler';
 import { useTheme } from '@mui/material/styles';
-import Condition from './HelperComponents/Condition';
+import Condition from './Condition';
 
 const PageFormWrapper = ({ children }) => {
   const theme = useTheme();

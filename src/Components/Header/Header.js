@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {  useTheme, Box } from '@mui/material';
+import { useTheme, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AvatarButton from '../../Global/AvatarButton/AvatarButton';
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 import Condition from '../../Global/HelperComponents/Condition';
-import ThemeModeToggler from '../../Global/ThemeModeToggler';
+import ThemeModeToggler from '../../Global/HelperComponents/ThemeModeToggler';
 
 const Header = ({ sidebarToggle }) => {
   const theme = useTheme();
@@ -31,8 +31,16 @@ const Header = ({ sidebarToggle }) => {
           <MenuIcon />
         </AvatarButton>
       </Box>
-      <ThemeModeToggler sx={{ padding: 1, position: 'absolute', right: 10, top: 10, color:'gray',borderColor:'gray' }} />
-
+      <ThemeModeToggler
+        sx={{
+          padding: 1,
+          position: 'absolute',
+          right: 10,
+          top: 10,
+          color: 'rgba(0, 0, 0, 0.54)',
+          borderColor: 'rgba(0, 0, 0, 0.54)'
+        }}
+      />
     </>
   );
 };

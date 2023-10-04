@@ -9,19 +9,17 @@ const SidebarMenu = ({ sidebarToggle }) => {
 
   return (
     <List sx={{ pt: 1 / 2 }}>
-      {privatePages[0].children
-        .slice(0, privatePages[0].children.length - 1)
-        .map(child => (
-          <ListItemButton
-            key={child.path}
-            onClick={() => switchLocation(child.path)}
-            selected={location === child.path}
-            sx={{ height: '43px' }}
-          >
-            <ListItemIcon>{React.createElement(child.menuIcon)}</ListItemIcon>
-            <ListItemText primary={<Typography variant='body1'>{child.menuLabel}</Typography>} />
-          </ListItemButton>
-        ))}
+      {privatePages[0].children.slice(0, privatePages[0].children.length - 2).map(child => (
+        <ListItemButton
+          key={child.path}
+          onClick={() => switchLocation(child.path)}
+          selected={location === child.path}
+          sx={{ height: '43px' }}
+        >
+          <ListItemIcon>{React.createElement(child.menuIcon)}</ListItemIcon>
+          <ListItemText primary={<Typography variant='body1'>{child.menuLabel}</Typography>} />
+        </ListItemButton>
+      ))}
     </List>
   );
 };

@@ -13,15 +13,13 @@ const RoutesWrapper = ({ pages, navigate }) => {
           key={'page' + page.path}
         >
           {page.children &&
-            page.children
-              .map(child => (
-                <Route
-                  path={child.path === '/home' ? '' : child.path}
-                  index={child.path === '/home'}
-                  element={React.createElement(child.component, { navigate: navigate })}
-                  key={'page' + page.path}
-                />
-              ))}
+            page.children.map(child => (
+              <Route
+                path={child.path}
+                element={React.createElement(child.component, { navigate: navigate })}
+                key={'page' + page.path}
+              />
+            ))}
         </Route>
       ))}
     </Routes>

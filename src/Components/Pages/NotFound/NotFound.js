@@ -1,11 +1,10 @@
 import React from 'react';
 import not_found from '../../../Img/404.png';
-import PageFormWrapper from '../../../Global/PageFormWrapper';
+import PageFormWrapper from '../../../Global/HelperComponents/PageFormWrapper';
 import { Button, Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 const NotFound = ({ navigate }) => {
-
   return (
     <PageFormWrapper>
       <Box

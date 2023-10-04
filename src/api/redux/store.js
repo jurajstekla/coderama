@@ -1,15 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import authSlice from './slices/authSlice';
-import dataTableSlice from './slices/dataTableSlice';
 import notificationsSlice from './slices/notificationsSlice';
-import treeSlice from './slices/treeSlice';
+import movieTableSlice from './slices/movieTableSlice';
 
 const reducer = combineReducers({
-  auth: authSlice,
-  tree: treeSlice,
   notifications: notificationsSlice,
-  dataTable: dataTableSlice
+  movieTable: movieTableSlice
 });
 
 export default configureStore({
