@@ -1,0 +1,19 @@
+So whole application has threee main pages as you alreay know.. Search, Details and Favorites. All those pages
+are wrapped by "Outlet" component from react-router-dom library. Some of the approaches may seems to be "overkill"
+like RouterWrapper. Thats because i wasnt building this app from scratch but i used core of one of my projects that
+is quite bigger.
+
+All styling is done with help of MUI. For global state handling is used redux toolkit and for another api call i used
+react-query. Clients data are stored in localStorage because compared to another client side storages has much more
+available space.
+
+Application is deployed trought GitHub Pages.
+
+dev info:
+node version: 16.4.0
+npm version: 7.18.1
+
+start:
+
+npm i
+npm start
