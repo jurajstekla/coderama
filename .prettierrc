@@ -1,8 +1,11 @@
 {
   "singleQuote": true,
   "jsxSingleQuote": true,
+  "tsxSingleQuote": true,
   "trailingComma": "none",
   "printWidth": 100,
   "bracketSpacing": true,
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "parser": "typescript"
+
 }
